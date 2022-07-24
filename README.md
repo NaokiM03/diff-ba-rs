@@ -35,7 +35,7 @@ let _result =  diff_ba::dbg!(&complex_variable, {
 ## Very easy sample
 
 ```rust
-use diff_ba_rs::prelude::*
+use diff_ba_rs::prelude::*;
 let mut a = 2;
 let b =  diff_ba::dbg!(&a,
     a *= 2;
