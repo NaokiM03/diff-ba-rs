@@ -39,3 +39,54 @@ pub mod diff_ba {
 pub mod prelude {
     pub use crate::{_diff_ba_impl, diff_ba};
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::prelude::*;
+
+    #[test]
+    fn test_dbg_nothing() {
+        let mut v = Vec::new();
+        v.push("foo");
+        v.push("bar");
+        let result = diff_ba::dbg!(&v, { v.join(", ") });
+        assert_eq!(result, "foo, bar");
+    }
+
+    #[test]
+    fn test_dbg_add() {
+        let mut v = Vec::new();
+        v.push("foo");
+        v.push("bar");
+        let result = diff_ba::dbg!(&v, {
+            v.push("baz");
+            v.join(", ")
+        });
+        assert_eq!(result, "foo, bar, baz");
+    }
+
+    #[test]
+    fn test_dbg_sub() {
+        let mut v = Vec::new();
+        v.push("foo");
+        v.push("bar");
+        let result = diff_ba::dbg!(&v, {
+            v.pop();
+            v.join(", ")
+        });
+        assert_eq!(result, "foo");
+    }
+
+    #[test]
+    fn test_dbg_mix() {
+        let mut v = Vec::new();
+        v.push("foo");
+        v.push("bar");
+        let result = diff_ba::dbg!(&v, {
+            v.pop();
+            v.push("baz");
+            v.join(", ")
+        });
+        assert_eq!(result, "foo, baz");
+    }
+}
