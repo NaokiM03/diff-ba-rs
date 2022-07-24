@@ -1,9 +1,9 @@
-//! # diff-ba
-//! 
-//! diff-ba is a library to get the differences of variables caused by procedures.
+//! # diff-ba-rs
+//!
+//! diff-ba-rs is a library to get the differences of variables caused by procedures.
 
 /// Module that provides a set of functions used inside macros.
-/// 
+///
 /// This module is available externally but is not intended to be used.
 pub mod _diff_ba_impl {
     trait Paint {
@@ -41,7 +41,7 @@ pub mod diff_ba {
     ///
     /// ```rust
     /// use diff_ba_rs::prelude::*;
-    /// 
+    ///
     /// let mut a = 2;
     /// let b =  diff_ba::dbg!(&a, {
     ///     a *= 2;
