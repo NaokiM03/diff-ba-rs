@@ -1,3 +1,10 @@
+//! # diff-ba
+//! 
+//! diff-ba is a library to get the differences of variables caused by procedures.
+
+/// Module that provides a set of functions used inside macros.
+/// 
+/// This module is available externally but is not intended to be used.
 pub mod _diff_ba_impl {
     trait Paint {
         fn red(&self) -> String;
@@ -23,7 +30,30 @@ pub mod _diff_ba_impl {
     }
 }
 
+/// Module that provides a set of macros.
 pub mod diff_ba {
+    /// Prints the procedural change difference
+    /// and returns the final expression in the procedural block.
+    ///
+    /// This macro works with a `Debug` implementation of the given expression type.
+    ///
+    /// An example:
+    ///
+    /// ```rust
+    /// use diff_ba_rs::prelude::*;
+    /// 
+    /// let mut a = 2;
+    /// let b =  diff_ba::dbg!(&a, {
+    ///     a *= 2;
+    ///     a + 1
+    /// });
+    /// // prints:
+    /// // ```
+    /// // - 2
+    /// // + 4
+    /// // ```
+    /// assert_eq!(b, 5);
+    /// ```
     #[macro_export]
     macro_rules! dbg_ {
         ($val:expr, $b:block) => {{
@@ -36,6 +66,8 @@ pub mod diff_ba {
     }
     pub use dbg_ as dbg;
 }
+
+/// Prelude module to import when using this crate.
 pub mod prelude {
     pub use crate::{_diff_ba_impl, diff_ba};
 }
