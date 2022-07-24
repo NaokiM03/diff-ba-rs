@@ -2,6 +2,11 @@
 name = "diff-ba-rs"
 version = "0.1.0"
 edition = "2021"
+authors = ["NaokiM03"]
+description = "This library provides macros to get the difference of variables caused by a procedure."
+keywords = ["macro", "debug", "diff"]
+repository = "https://github.com/NaokiM03/diff-ba-rs"
+license = "MIT"
 
 [dependencies]
 diff = "0.1.13"
