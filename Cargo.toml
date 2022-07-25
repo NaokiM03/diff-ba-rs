@@ -12,3 +12,4 @@ license = "MIT"
 
 [dependencies]
 diff = "0.1.13"
+tiny-ansi = "0.1.0"

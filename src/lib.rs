@@ -6,19 +6,7 @@
 ///
 /// This module is available externally but is not intended to be used.
 pub mod _diff_ba_impl {
-    trait Paint {
-        fn red(&self) -> String;
-        fn green(&self) -> String;
-    }
-    impl Paint for str {
-        fn red(&self) -> String {
-            format!("\u{1b}[31m{}\u{1b}[0m", self)
-        }
-        fn green(&self) -> String {
-            format!("\u{1b}[32m{}\u{1b}[0m", self)
-        }
-    }
-
+    use tiny_ansi::TinyAnsi;
     pub fn _dbg(before: &str, after: &str) {
         for diff in diff::lines(before, after) {
             match diff {
